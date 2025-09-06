@@ -1,36 +1,29 @@
 #include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
 
 int main()
 {
-	//三只小猪称体重
+	printf("please input a num(1~100)\n");
+	srand(time(NULL));
+	int random = rand() % 100 + 1; 
+	int guess = 0;
 
-	int a, b, c;
-	printf("please input weight of three pigs A:");
-	scanf("%d", &a);
-	printf("please input weight of three pigs B:");
-	scanf("%d", &b);
-	printf("please input weight of three pigs C:");
-	scanf("%d", &c);
-	if (a > b)
+	while (1)
 	{
-		if (a > c)
+		scanf("%d", &guess);
+		if (random > guess)
 		{
-			printf("Pig A is the heaviest");
+			printf("less\n");
+		}
+		else if (random < guess)
+		{
+			printf("more\n");
 		}
 		else
 		{
-			printf("Pig C is the heaviest");
-		}
-	}
-	else
-	{
-		if (b > c)
-		{
-			printf("Pig B is the heaviest");
-		}
-		else
-		{
-			printf("Pig C is the heaviest");
+			printf("yes\n");
+			break;
 		}
 	}
 	
