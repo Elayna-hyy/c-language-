@@ -2,74 +2,32 @@
 #include<stdlib.h>
 #include<time.h>
 
-int contrast(int arr[], int len, int random)
-{
-	for (int a = 0; a < len; a++)
-	{
-		if (arr[a]==random)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
 
 int main()
 { 
-	//1.Find the maximum value
-	int arr[] = {33,5,22,44,55};
-	int max = arr[0];
-	int len = sizeof(arr) / sizeof(arr[0]);
+	int arr[] = { 1,2,3,4,5 };
+	int len = sizeof(arr) / sizeof(0);
+	srand(time(NULL));
+	int random = rand() % len;
+
 	for (int i = 0; i < len; i++)
 	{
-		if (arr[i] < arr[i + 1])
-		{
-			max = arr[i + 1];
-		}
-	}
-	printf("%d\n", max);
-
-	//2.Traverse the array and sum it up
-	srand(time(NULL));
-	int arr[10] = {0};
-	int len = sizeof(arr) / sizeof(arr[0]);
-
-	for (int a =0; a < len ; )
-	{
-		int random = rand() % 100 + 1;
-		int flag =contrast(arr, len, random);
-		if (!flag)
-		{
-			arr[a] = random;
-			a++;
-		}
-	}
-
-	for (int a = 0; a < len; a++)
-	{
-		printf("%d\t", arr[a]);
+		printf("%d    ", arr[i]);
 	}
 	printf("\n");
-
-	int sum = 0;
-	for (int a = 0; a < len; a++)
+	for (int i = 0; i < len; i++)
 	{
-		sum = sum + arr[a];
+		int temp = arr[i];
+		arr[i] = arr[random];
+		arr[random] = temp;
 	}
-	printf("The sum of the random array is :%d\n", sum);
 
-	int ave = sum /len;
-	printf("The average of the random array is :%d\n", ave);
-
-	int less = 0;
-	for (int a = 0; a < len; a++)
+	for (int i = 0; i < len; i++)
 	{
-		if (arr[a] < ave)
-		{
-			less++;
-		}
+		printf("%d    ", arr[i]);
 	}
-	printf("a total of %d numbers less than the average\n", less);
+	printf("\n");
+	
 	
 
 
