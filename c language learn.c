@@ -2,31 +2,40 @@
 #include<stdlib.h>
 #include<time.h>
 
+int binarysearch(int arr[],int len ,int num)
+{
+	int min = 0;
+	int max = len - 1;
+
+	while (min <= max)
+	{
+		int mid = (min + max) / 2;
+		if (arr[mid] < num)
+		{
+			min = mid +1 ;
+		}
+		else if (arr[mid]>num)
+		{
+			max = mid-1 ;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	return -1;
+}
 
 int main()
 { 
-	int arr[] = { 1,2,3,4,5 };
-	int len = sizeof(arr) / sizeof(0);
-	srand(time(NULL));
-	int random = rand() % len;
+	int arr[8] = { 7,23,79,81,103,127,131,147 };
+	int len = sizeof(arr) / sizeof(int);
+	int num = 131;
+	int index =binarysearch(arr, len, num);
+	printf("%d\n", index);
 
-	for (int i = 0; i < len; i++)
-	{
-		printf("%d    ", arr[i]);
-	}
-	printf("\n");
-	for (int i = 0; i < len; i++)
-	{
-		int temp = arr[i];
-		arr[i] = arr[random];
-		arr[random] = temp;
-	}
 
-	for (int i = 0; i < len; i++)
-	{
-		printf("%d    ", arr[i]);
-	}
-	printf("\n");
+
 	
 	
 
