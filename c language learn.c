@@ -2,31 +2,36 @@
 #include<stdlib.h>
 #include<time.h>
 
-
-
-int main()
-{ 
-	int arr[5] = { 3,5,2,1,4 };
-	int len = sizeof(arr) / sizeof(int);
-
-	for (int i = 0; i < len-1; i++)
+void MaxandMin(int arr[], int len, int* max, int* min)
+{
+	*max = arr[0];
+	for (int i = 0; i < len; i++)
 	{
-		for (int j = i+1; j < len; j++)
+		if (arr[i] > *max)
 		{
-			if (arr[i] > arr[j])
-			{
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j]  = temp;
-			}
+			*max = arr[i];
 		}
 	}
 
-	for (int i = 0; i < len ; i++)
+	*min = arr[0];
+	for (int i = 0; i < len; i++)
 	{
-		printf("%d  ", arr[i]);
+		if (arr[i] < *min)
+		{
+			*min = arr[i];
+		}
 	}
+}
 
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int len = sizeof(arr) / sizeof(int);
+	int max = arr[0];
+	int min = arr[0];
+	MaxandMin(arr, len, &max, &min);
+	printf("Max:%d\n", max);
+	printf("Min:%d\n", min);
 
 
 
