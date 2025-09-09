@@ -2,26 +2,25 @@
 #include<stdlib.h>
 #include<time.h>
 
+void test1()
+{
+	printf("test1\n");
+}
+
+int test2(int num1, int num2)
+{
+	printf("test2\n");
+	return num1 + num2;
+}
 
 int main()
 {
-	int arr[2][5] =
-	{
-		{1,2,3,4,5},
-		{11,22,33,44,55}
-	};
+	void (*p1)() = test1;
+	int (*p2)(int, int) = test2;
+	p1();
+	int num = p2(10, 20);
+	printf("%d\n", num);
 
-	int(*p)[5] = arr;
-
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			printf("%d  ", *(*p + j));
-		}
-		printf("\n");
-		p++;
-	}
 
 
 	system("pause");
