@@ -2,39 +2,44 @@
 #include<stdlib.h>
 #include<time.h>
 
-void MaxandMin(int arr[], int len, int* max, int* min)
+//将函数结果和状态分开的例子
+/*int remainder(int num1, int num2, int res)
 {
-	*max = arr[0];
-	for (int i = 0; i < len; i++)
+	if (num2 == 0)//因此要写一个判断，但是必须要返回一个值，由于是求余数，所以返回多少都不合适
 	{
-		if (arr[i] > *max)
-		{
-			*max = arr[i];
-		}
+		return ?:
 	}
-
-	*min = arr[0];
-	for (int i = 0; i < len; i++)
+	res = num1 % num2;//假如num2=0时就报错了
+	return res;
+}*/
+int remainder(int num1, int num2, int* res)
+{
+	if (num2 == 0)
 	{
-		if (arr[i] < *min)
-		{
-			*min = arr[i];
-		}
+		return 1;
 	}
+	*res = num1 % num2;//此时写成用返回值表示状态，0正常 1不正常，就可以了
+	return 0;
 }
 
 int main()
 {
-	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
-	int len = sizeof(arr) / sizeof(int);
-	int max = arr[0];
-	int min = arr[0];
-	MaxandMin(arr, len, &max, &min);
-	printf("Max:%d\n", max);
-	printf("Min:%d\n", min);
+	int a = 10;
+	int b = 4;
+	int res = 0;
+	int flag = remainder(a, b, &res);
+	//对状态进行判断
+	if (flag == 0)
+	{
+		printf("the remainder is %d\n", res);
+	}
 
 
 
 	system("pause");
 	return 0;
 }
+
+
+
+
