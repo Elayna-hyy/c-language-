@@ -6,43 +6,21 @@
 
 int main()
 {
-	char strarr[5][100] =
-	{
-		"zhangsan",
-		"lisi",
-		"wangwu",
-		"zhaoliu",
-		"qianqi"
-	};
+	printf("please input a strip string:");
+	char str[100];//由于键盘录入是修改，故不可以用第二种方式
+	scanf("%s", str);//str本身就可以看作指针
 
-	for (int i = 0; i < 5; i++)
+	char* p = str;
+	while (1)//由于不知道数组长度可以用while循环，
 	{
-		char* str = strarr[i];
-		//不能用 char str[100]=strarr[i]的方式去遍历
-		printf("%s\n", str);
+		char c = *p;
+		if (c == '\0')//数组的最后一位编译器默认添加/0，可以用这个来结束循环
+		{
+			break;
+		}
+		printf("%c\n", c);
+		p++;
 	}
-
-	char* strarr2[5] =
-	{
-		"zhangsan",
-		"lisi",
-		"wangwu",
-		"zhaoliu",
-		"qianqi"
-	};
-
-	for (int i = 0; i < 5; i++)
-	{
-		char* str = strarr2[i];
-		printf("%s\n", str);
-	}
-
-
-
-
-
-
-
 
 
 
