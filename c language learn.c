@@ -1,25 +1,53 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 
-void test1()
-{
-	printf("test1\n");
-}
-
-int test2(int num1, int num2)
-{
-	printf("test2\n");
-	return num1 + num2;
-}
 
 int main()
 {
-	void (*p1)() = test1;
-	int (*p2)(int, int) = test2;
-	p1();
-	int num = p2(10, 20);
-	printf("%d\n", num);
+	char* ri_account = "zhangsan";
+	char* ri_code = "123456";
+
+	
+
+	for (int i = 1; i <= 3; i++)
+	{
+		printf("please input your account name\n");
+		char account[100];
+		scanf("%s", account);
+
+		printf("please input your password\n");
+		char code[100];
+		scanf("%s", code);
+		if (!strcmp(ri_account, account) && !strcmp(ri_code, code))//该函数返回值为0，0为假，故取反
+		{
+			printf("YES\n");
+			break;
+		}
+		else
+		{
+			if (i == 3)
+			{
+				printf("用户%s被锁定，请联系0858\n", ri_account);
+			}
+			else
+			{
+				printf("NO");
+				printf("你还有%d次机会\n", 3 - i);
+			}
+		}
+
+	}
+
+
+
+
+
+
+
+
+
 
 
 
