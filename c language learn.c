@@ -3,33 +3,32 @@
 #include<time.h>
 #include<string.h>
 
-
+typedef struct ulrtraman
+{
+	char name[100];
+	int attack;
+	int defence;
+	int blood;
+}M;
 int main()
 {
-	//统计字符次数
-	char str[100];
-	int bigcount=0, smallcount=0,numcount=0;
-	printf("please input a string\n");
-	scanf("%s", str);
-	for (int i = 0; i < strlen(str); i++)
+	//结构体 起别名
+	M taro = { "泰罗",100,90,500 };
+	M rem = { "雷欧",90,70,100 };
+	M eddie = { "艾迪",80,60,400 };
+
+	M arr[3] = { taro,rem,eddie };
+	for (int i = 0; i < 3; i++)
 	{
-		char c = str[i];
-		if (c >= 'a'&&c <= 'z')
-		{
-			smallcount++;
-		}
-		else if (c >= 'A'&& c <= 'Z')
-		{
-			bigcount++;
-		}
-		else if (c >= '0'&&c <= '9')
-		{
-			numcount++;
-		}
+		M temp =  arr[i];
+		printf("名字：%s，攻击力：%d，防御力：%d，血量：%d\n", temp.name, temp.attack, temp.defence, temp.blood);
 	}
-	printf("smallcount:%d\n", smallcount);
-	printf("bigcount:%d\n", bigcount);
-	printf("numcount:%d\n", numcount);
+
+	
+	
+
+
+
 
 
 
