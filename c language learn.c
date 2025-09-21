@@ -6,23 +6,30 @@
 
 int main()
 {
-	printf("please input a strip string:");
-	char str[100];//由于键盘录入是修改，故不可以用第二种方式
-	scanf("%s", str);//str本身就可以看作指针
-
-	char* p = str;
-	while (1)//由于不知道数组长度可以用while循环，
+	//统计字符次数
+	char str[100];
+	int bigcount=0, smallcount=0,numcount=0;
+	printf("please input a string\n");
+	scanf("%s", str);
+	for (int i = 0; i < strlen(str); i++)
 	{
-		char c = *p;
-		if (c == '\0')//数组的最后一位编译器默认添加/0，可以用这个来结束循环
+		char c = str[i];
+		if (c >= 'a'&&c <= 'z')
 		{
-			break;
+			smallcount++;
 		}
-		printf("%c\n", c);
-		p++;
+		else if (c >= 'A'&& c <= 'Z')
+		{
+			bigcount++;
+		}
+		else if (c >= '0'&&c <= '9')
+		{
+			numcount++;
+		}
 	}
-
-
+	printf("smallcount:%d\n", smallcount);
+	printf("bigcount:%d\n", bigcount);
+	printf("numcount:%d\n", numcount);
 
 
 
