@@ -3,56 +3,33 @@
 #include<time.h>
 #include<stdlib.h>
 
-
-struct spot
-{
-	char name[100];
-	int count;
-};
-
-
+void ergodic(int* p, int size);
 
 
 int main()
 {
-	struct spot arr[4] = { {"A",0} ,{ "B",0 }, { "C",0 }, { "D",0 } };
-	srand(time(NULL));
-	for (int i = 0; i < 80; i++)
-	{
-		//choose既表示投票也表示索引
-		int choose = rand() % 4;
-		arr[choose].count++;
-	}
-
+	int* p = malloc(25 * sizeof(int));
+	int size = 25;
 	
-	for (int i = 0; i < 4; i++)
+	//对空间进行赋值
+	for (int i = 0; i < size; i++)
 	{
-		struct spot temp = arr[i];
-		printf("%s %d\n", temp.name,temp.count);
+		int random = (i + 1) % 100;
+		*(p + i) = random;
 	}
+	ergodic(p, 25);
 
-	int max = arr[0].count;
-	for (int i = 0; i < 4; i++)
+	int* p1 = realloc(p, 100 * sizeof(int));
+
+	for (int i = 0; i < 100; i++)
 	{
-		if (arr[i].count < arr[i+1].count)
-		{
-			max = arr[i + 1].count;
-		}
+		int random = (i + 1) % 100;
+		*(p1 + i) = random;
 	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		struct spot temp = arr[i];
-		if (temp.count==max)
-		{
-			printf("投票数最多的景点为%s，共计：%d张票\n", arr[i].name, arr[i].count);
-			break;
-		}
-	}
-
-
-
+	ergodic(p1, 100);
 	
+	int* p2 = calloc(100 , sizeof(int));
+	ergodic(p2, 100);
 	
 	
 	
@@ -61,3 +38,11 @@ int main()
 	return 0;
 }
 
+void ergodic(int* p, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		printf("%d ", *(p + i));
+	}
+	printf("\n");
+}

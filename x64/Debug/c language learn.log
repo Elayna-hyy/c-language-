@@ -1,3 +1,2 @@
 ﻿  c language learn.c
-E:\vs项目\c language learn\c language learn\c language learn.c(19,8): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
   c language learn.vcxproj -> E:\vs项目\c language learn\x64\Debug\c language learn.exe
