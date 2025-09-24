@@ -1,48 +1,38 @@
 #include <stdio.h>
 #include<string.h>
-#include<time.h>
 #include<stdlib.h>
 
-void ergodic(int* p, int size);
+struct linkman
+{
+	char name[20];
+	int age;
+};
 
+struct roster
+{
+	struct linkman arr;
+	int size;
+};
+
+void add(struct roster* p)
+{
+	printf("请输入姓名：");
+	scanf("%s", p->arr.name);
+	printf("姓名：%s\n", p->arr.name);
+}
 
 int main()
 {
-	int* p = malloc(25 * sizeof(int));
-	int size = 25;
+	//结构体嵌套 指针键盘赋值
+	struct roster* p=malloc(sizeof(struct roster));
+	add(p);
 	
-	//对空间进行赋值
-	for (int i = 0; i < size; i++)
-	{
-		int random = (i + 1) % 100;
-		*(p + i) = random;
-	}
-	ergodic(p, 25);
 
-	int* p1 = realloc(p, 100 * sizeof(int));
-
-	for (int i = 0; i < 100; i++)
-	{
-		int random = (i + 1) % 100;
-		*(p1 + i) = random;
-	}
-	ergodic(p1, 100);
-	
-	int* p2 = calloc(100 , sizeof(int));
-	ergodic(p2, 100);
-	
-	
-	
 
 	system("pause");
 	return 0;
 }
 
-void ergodic(int* p, int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		printf("%d ", *(p + i));
-	}
-	printf("\n");
-}
+
+
+
