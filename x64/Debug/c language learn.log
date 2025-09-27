@@ -1,2 +1,3 @@
 ﻿  c language learn.c
+E:\vs项目\c language learn\c language learn\c language learn.c(28,12): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
   c language learn.vcxproj -> E:\vs项目\c language learn\x64\Debug\c language learn.exe
