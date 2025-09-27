@@ -4,19 +4,22 @@
    
 int main()
 {
-	FILE* file = fopen("D:\\OneDrive\\桌面\\test1.txt", "w");
+	//用代码复制 粘贴文件
+	//win中记事本能打开并且能读懂的，只有纯文本文件，txt mx irc
+	FILE* file1 = fopen("D:\\OneDrive\\桌面\\test.docx", "rb");
 
-	int c = fputc(97,file);
-	printf("%c\n", c);
+	FILE* file2 = fopen("D:\\OneDrive\\桌面\\test\\copy.docx", "wb");
 
-	int n = fputs("你好世界", file);//返回0 表示写出成功
-	printf("%d\n", n);
+	char arr[1024];
+	int n;
+	while ((n =fread(arr, 1, 1024, file1)) != 0)
+	{
+		fwrite(arr, 1, n, file2);
+	}
+	fclose(file1);
+	fclose(file2);
 
-	char arr[] = { 97,98,99,100,101 };
-	int n1=fwrite(arr,1,5,file);
-	printf("%d\n", n1);
 
-	fclose(file);
 	
 
 
